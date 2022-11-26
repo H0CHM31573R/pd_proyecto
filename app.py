@@ -32,7 +32,8 @@ sign_model = load_model("simple_cnn.h5")
 
 @app.get("/", tags=["Root"])
 async def read_root():
-    return {"message": "You can find my sourcecode at: https://github.com/H0CHM31573R/pd_proyecto"}
+    return {"Source": "You can find my source code at: https://github.com/H0CHM31573R/pd_proyecto", 
+            "API": "You can test my API at: http://ec2-3-82-149-136.compute-1.amazonaws.com/docs"}
     
 @app.post("/model/sign")
 async def analizar_imagen(image:UploadFile = File(...)):
