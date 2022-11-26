@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8"></meta>
+  <title>Clasificacion de signos de ASL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"></link>
+  <link rel="stylesheet" href="static/style.css"></link>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>Clasificacion de signos de ASL</h2>
+<p class="lead">Carga una imagen con un signo de ASL</p>
+
+<!-- Upload  -->
+<form id="file-upload-form" class="uploader">
+  <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+
+  <label for="file-upload" id="file-drag">
+    <img id="file-image" src="#" alt="Preview" class="hidden"></img>
+    <div id="start">
+      <i id="load_img" class="fa fa-download" aria-hidden="true"></i>
+      <div>Carga una imagen o arrastrala</div>
+      <div id="notimage" class="hidden">Por favor seleccione una imagen</div>
+      <span id="file-upload-btn" class="btn btn-primary">Seleccione un archivo</span>
+    </div>
+    <div id="response" class="hidden">
+      <div id="messages"></div>
+      <progress class="progress" id="file-progress" value="0">
+        <span>0</span>%
+      </progress>
+    </div>
+	<div id = "pred" class = "hidden">
+		
+	</div>
+  </label>
+</form>
+
+<div class="uploader">
+	<a href="https://github.com/H0CHM31573R/pd_proyecto">Codigo fuente</a>
+	<br>
+	Puede encontrar ejemplos de imagenes en el siguiente <a href="https://www.kaggle.com/datasets/grassknoted/asl-alphabet">dataset de Kaggle</a>
+	<br>
+	La prediccion de la imagen puede ser usada VIA API: <a href="http://3.82.149.136/docs">Swagger Docs</a>
+<div>
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="static/script.js"></script>
+
+</body>
+</html>
