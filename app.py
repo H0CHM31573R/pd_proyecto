@@ -32,7 +32,7 @@ sign_model = load_model("simple_cnn.h5")
 
 @app.get("/", tags=["Root"])
 async def read_root():
-    return {"message": "Welcome to the API!"}
+    return {"message": "You can find my sourcecode at: https://github.com/H0CHM31573R/pd_proyecto"}
     
 @app.post("/model/sign")
 async def analizar_imagen(image:UploadFile = File(...)):
