@@ -1,3 +1,4 @@
 *.h5
 *.bak
 venv/
+__pycache__/
