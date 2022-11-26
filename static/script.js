@@ -132,6 +132,7 @@ function ekUpload(){
 		let formData = new FormData();
 		formData.append("image", file);
 
+		$("#animation").show();
 		$.ajax({
 			"url": "/model/sign",
 			"method": "POST",
@@ -143,7 +144,7 @@ function ekUpload(){
 			"mimeType":     "multipart/form-data",
 			"data":         formData
 		}).done(function(response){
-
+			$("#animation").hide();
 			console.log(response);
 			document.getElementById('pred').innerHTML=response
 
