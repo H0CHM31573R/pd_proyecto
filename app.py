@@ -12,8 +12,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse 
 
-from numpy import fromstring, uint8, reshape
-from cv2 import imdecode, cvtColor, resize, IMREAD_COLOR, COLOR_BGR2RGB, INTER_AREA
+#from numpy import fromstring, uint8, reshape, array
+#from cv2 import imdecode, cvtColor, resize, IMREAD_COLOR, COLOR_BGR2RGB, INTER_AREA
+import numpy as np
+import cv2
 
 from tensorflow.keras.models import load_model
 
@@ -44,16 +46,18 @@ async def read_root():
 @app.post("/model/sign")
 async def analizar_imagen(image:UploadFile = File(...)):
     contents = await image.read()
-    nparr = fromstring(contents, uint8)
+    nparr = np.fromstring(contents, np.uint8)
     
-    img = imdecode(nparr, IMREAD_COLOR)
-    img = cvtColor(img, COLOR_BGR2RGB)
-    img = resize(img, (150, 150), interpolation = INTER_AREA)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = cv2.resize(img, (150, 150), interpolation = cv2.INTER_AREA)
     img = img/255.0
     inp = img.reshape(1, 150, 150, 3)
     pred = sign_model.predict(inp)
     pred_class = pred.argmax(axis=-1)
     
-    return {
-        "prediction": classes[pred_class],
-    }
+    return classes[pred_class[0]]
+    
+    # return {
+        # "pred": classes[pred_class[0]],
+    # }

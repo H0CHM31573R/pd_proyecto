@@ -133,9 +133,9 @@ function ekUpload(){
 		formData.append("image", file);
 
 		$.ajax({
-			"url": "http://3.82.149.136/model/sign",
+			"url": "/model/sign",
 			"method": "POST",
-			"headers": {},
+			"headers": { 'Access-Control-Allow-Origin': '*'},
 			"async":        true,
 			"crossDomain":  true,
 			"processData":  false,
