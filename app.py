@@ -19,7 +19,6 @@ import cv2
 
 from tensorflow.keras.models import load_model
 from tensorflow.image import rgb_to_grayscale
-from tensorflow import cast as tf_cast
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory='static',html=True))
