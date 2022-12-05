@@ -18,6 +18,7 @@ import numpy as np
 import cv2
 
 from tensorflow.keras.models import load_model
+from tensorflow.image import rgb_to_grayscale
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory='static',html=True))
@@ -51,6 +52,7 @@ async def analizar_imagen(image:UploadFile = File(...)):
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, (150, 150), interpolation = cv2.INTER_AREA)
+    img = rgb_to_grayscale(img)
     img = img/255.0
     inp = img.reshape(1, 150, 150, 3)
     pred = sign_model.predict(inp)
